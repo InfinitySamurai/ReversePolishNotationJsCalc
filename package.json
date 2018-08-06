@@ -10,5 +10,8 @@
   "license": "ISC",
   "dependencies": {
     "hapi": "^17.5.3"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1"
   }
 }
