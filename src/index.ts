@@ -9,23 +9,32 @@ server.route({
   method: 'GET',
   path: '/hello',
   handler: (request: Hapi.Request, reply: Hapi.IReply) => {
-    return 'Hello World';
+    return {thing: 'Nothing here'};
   }
 });
 
 server.route({
   method: 'POST',
-  path: '/stack'
+  path: '/stack',
+  handler: (request: Hapi.Request, reply: Hapi.IReply) => {
+    return {thing: 'Nothing here'};
+  }
 });
 
 server.route({
   method: 'GET',
-  path: '/stack'
+  path: '/stack',
+  handler: (request: Hapi.Request, reply: Hapi.IReply) => {
+    return {thing: 'Nothing here'};
+  }
 });
 
 server.route({
   method: 'GET',
-  path: '/history'
+  path: '/history',
+  handler: (request: Hapi.Request, reply: Hapi.IReply) => {
+    return {thing: 'Nothing here'};
+  }
 });
 
 async function start() {

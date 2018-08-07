@@ -3,6 +3,7 @@ var tslint = require('gulp-tslint')
 var runSequence = require('run-sequence')
 var typescript = require('gulp-typescript')
 var nodemon = require('nodemon')
+var watch = require('gulp-watch')
 
 var tsProject = typescript.createProject('tsconfig.json')
 
