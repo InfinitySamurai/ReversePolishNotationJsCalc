@@ -1,9 +1,13 @@
+import {EntryPoint} from './EntryPoint';
 import * as Hapi from 'hapi';
 
 const server: Hapi.Server = Hapi.Server({
   host: 'localhost',
   port: 3000
 });
+
+const a: EntryPoint = new EntryPoint();
+console.log(a.getStack());
 
 server.route({
   method: 'GET',
