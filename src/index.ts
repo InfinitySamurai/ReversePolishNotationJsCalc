@@ -13,6 +13,21 @@ server.route({
   }
 });
 
+server.route({
+  method: 'POST',
+  path: '/stack'
+});
+
+server.route({
+  method: 'GET',
+  path: '/stack'
+});
+
+server.route({
+  method: 'GET',
+  path: '/history'
+});
+
 async function start() {
   try {
     await server.start();
