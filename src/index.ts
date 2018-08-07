@@ -1,5 +1,5 @@
 function gettingStarted(words: string) {
-	return "These are your words: " + words;
+	return 'These are your words: ' + words;
 }
 
-console.log(gettingStarted("You said what now?"))
+console.log(gettingStarted('You said what now?'))
