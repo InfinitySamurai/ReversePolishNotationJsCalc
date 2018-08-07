@@ -1,7 +1,11 @@
 var gulp = require('gulp')
 var tslint = require('gulp-tslint')
 var runSequence = require('run-sequence')
-var typescript = require('gulp-tsc')
+var typescript = require('gulp-typescript')
+var nodemon = require('nodemon')
+
+var tsProject = typescript.createProject('tsconfig.json')
+
 
 gulp.task('default', () => {
   console.log("Your only option right now is `gulp serve`");
@@ -19,12 +23,18 @@ gulp.task('tslint', () => {
 
 gulp.task('build', () => {
   return gulp.src(["src/**/*.ts"])
-    .pipe(typescript())
+    .pipe(tsProject())
     .pipe(gulp.dest('build/'))
 })
 
 gulp.task('runServer', () => {
-  return console.log("not implemented yet")
+  nodemon ({
+    script: "build/index.js",
+    env: { "NODE_ENV": "development"}
+  })
+    .on("restart", () => {
+      console.log("restarted")
+    })
 })
 
 gulp.task('serve', function(cb) {

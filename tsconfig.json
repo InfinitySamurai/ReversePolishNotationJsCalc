@@ -1,6 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "build/"
+    "outDir": "build/",
+    "target": "ES5",
+    "lib": [
+      "ES2015", "dom"
+    ]
   },
   "include": [
     "src/*.ts"

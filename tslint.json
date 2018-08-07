@@ -64,7 +64,7 @@
     "no-bitwise": true,
     "no-conditional-assignment": true,
     "no-consecutive-blank-lines": true,
-    "no-console": true,
+    "no-console": false,
     "no-construct": true,
     "no-debugger": true,
     "no-duplicate-super": true,
@@ -143,7 +143,7 @@
     "trailing-comma": {
         "options": {
             "esSpecCompliant": true,
-            "multiline": "always",
+            "multiline": "never",
             "singleline": "never"
         }
     },
