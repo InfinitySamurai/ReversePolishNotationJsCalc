@@ -1,9 +1,11 @@
+import {Parser} from './parser';
+
 class EntryPoint {
 
-  private thing: number;
+  private parser: Parser;
 
   constructor() {
-    thing = 1;
+    this.parser = new Parser();
   }
 
   public getStack() {
@@ -13,7 +15,7 @@ class EntryPoint {
   }
 
   public handleInput(input: string) {
-    return input;
+    return this.parser.parseString(input);
   }
 
   public getHistory() {
