@@ -1,19 +1,18 @@
-import {EntryPoint} from './EntryPoint';
 import * as Hapi from 'hapi';
+import {EntryPoint} from './EntryPoint';
 
 const server: Hapi.Server = Hapi.Server({
   host: 'localhost',
   port: 3000
 });
 
-const a: EntryPoint = new EntryPoint();
-console.log(a.getStack());
+const entryPoint: EntryPoint = new EntryPoint();
 
 server.route({
   method: 'GET',
   path: '/hello',
   handler: (request: Hapi.Request, reply: Hapi.IReply) => {
-    return {thing: 'Nothing here'};
+    return entryPoint.getStack();
   }
 });
 
@@ -21,7 +20,7 @@ server.route({
   method: 'POST',
   path: '/stack',
   handler: (request: Hapi.Request, reply: Hapi.IReply) => {
-    return {thing: 'Nothing here'};
+    return entryPoint.handleInput(request.payload);
   }
 });
 
