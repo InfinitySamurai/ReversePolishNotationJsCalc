@@ -20,7 +20,12 @@ server.route({
   method: 'POST',
   path: '/stack',
   handler: (request: Hapi.Request, reply: Hapi.IReply) => {
-    return entryPoint.handleInput(request.payload);
+    try {
+      return entryPoint.handleInput(request.payload);
+    } catch (err) {
+      console.log(err);
+      return 'Error: ' + err.message;
+    }
   }
 });
 

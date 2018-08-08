@@ -8,14 +8,13 @@ class Parser {
     if (splitInput.every(this.validateString)) {
       return splitInput;
     }
-    throw new Error('Input contained invalid command');
   }
 
   // check that our string is either a number, or in the validOperators list
   private validateString(input: string) {
     const validOperators: string[] = ['+', '-', '*', '/', 'sqrt', 'clear', 'clr', 'undo'];
     if (!isNaN(Number(input)) || validOperators.indexOf(input) > -1 ) { return true; }
-    return false;
+    throw new Error('Input contained invalid string: ' + input);
   }
 }
 
