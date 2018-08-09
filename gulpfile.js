@@ -4,6 +4,7 @@ var runSequence = require('run-sequence')
 var typescript = require('gulp-typescript')
 var nodemon = require('nodemon')
 var watch = require('gulp-watch')
+var mocha = require('gulp-mocha')
 
 var tsProject = typescript.createProject('tsconfig.json')
 
@@ -20,6 +21,15 @@ gulp.task('tslint', () => {
     .pipe(tslint.report({
       allowWarnings: true
     }))
+})
+
+gulp.task('test', () => {
+  return gulp.src('test/**/*.spec.ts')
+    .pipe(mocha({compilers: 'ts:ts-node/register'}))
+    .once('error', err => {
+      console.error(err);
+      process.exit(1);
+    })
 })
 
 gulp.task('build', () => {
@@ -39,5 +49,5 @@ gulp.task('runServer', () => {
 })
 
 gulp.task('serve', function(cb) {
-  runSequence('tslint', 'build', 'runServer', cb)
+  runSequence(['tslint', 'test'], 'build', 'runServer', cb)
 });
