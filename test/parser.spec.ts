@@ -19,4 +19,19 @@ describe('Parser', () => {
     const input = '19 94 32 11 71';
     expect(parser.parseString(input)).to.deep.equal(['19', '94', '32', '11', '71']);
   });
-})
+
+  it('should throw an error when invalid input is provided', () => {
+    const input = 'invalid text here';
+    expect(parser.parseString.bind(parser, input)).to.throw();
+  });
+
+  it('should throw an error even if there is some valid input', () => {
+    const input = '57 12 inv 11';
+    expect(parser.parseString.bind(parser, input)).to.throw();
+  });
+
+  it('should accept valid operators in input string', () => {
+    const input = '57 12 / 11 + clear undo';
+    expect(parser.parseString(input)).to.deep.equal(['57', '12', '/', '11', '+', 'clear', 'undo']);
+  });
+});
