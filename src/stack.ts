@@ -2,6 +2,13 @@ class Stack {
 
   private stack: string[];
 
+  private operatorToFunction = {
+    '+': (x, y) => x + y,
+    '-': (x, y) => x - y,
+    '/': (x, y) => x / y,
+    '*': (x, y) => x * y
+  };
+
   constructor() {
     this.stack = [];
   }
@@ -32,10 +39,21 @@ class Stack {
   }
 
   private applyOperatorToStack(operator: string): void {
-    const topOfStack = Number(this.stack.pop());
-    const secondTopOfStack = Number(this.stack.pop());
+    if (operator === 'clear' || operator === 'clr') {
+      this.clearStack();
+      return;
+    }
 
-    this.stack.push(String(secondTopOfStack + topOfStack));
+    const topOfStack = Number(this.stack.pop());
+    if (operator === 'sqrt') {
+      this.stack.push(String(Math.sqrt(topOfStack)));
+      return;
+    }
+
+    const secondTopOfStack = Number(this.stack.pop());
+    const operatorResult = this.operatorToFunction[operator](secondTopOfStack, topOfStack);
+
+    this.stack.push(String(operatorResult));
   }
 
 }
