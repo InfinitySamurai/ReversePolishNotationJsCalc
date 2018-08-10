@@ -49,4 +49,9 @@ describe('Stack', () => {
     stack.pushListToStack(input1);
     expect(stack.pushListToStack(['clear'])).to.deep.equal([]);
   });
+
+  it('should apply operators in the right order for a longer statement', () => {
+    const input = ['15', '7', '1', '1', '+', '-', '/', '3', '*', '2', '1', '1', '+', '+', '-'];
+    expect(stack.pushListToStack(input)).to.deep.equal(['5']);
+  });
 });
