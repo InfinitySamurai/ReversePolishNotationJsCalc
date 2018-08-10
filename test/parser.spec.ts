@@ -34,4 +34,9 @@ describe('Parser', () => {
     const input = '57 12 / 11 + clear undo';
     expect(parser.parseString(input)).to.deep.equal(['57', '12', '/', '11', '+', 'clear', 'undo']);
   });
+
+  it('should reject 0 as an input', () => {
+    const input = '1 5 / 0 12 clear';
+    expect(parser.parseString.bind(parser, input)).to.throw();
+  });
 });
