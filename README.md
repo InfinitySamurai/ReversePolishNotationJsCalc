@@ -5,7 +5,7 @@ A calculator built in JS for Reverse Polish Notation.
 This incorporates the use of Typescript, and uses Hapi as a web server for this
 to be used over the web with POST and GET requests.
 
-The following are the requirements, constraints and expected behaviours as defined by [AJConnel](https://github.com/ajconnell/reversePolishCalculator/blob/master/README.md):
+The following are the requirements, constraints and expected behaviours as defined by [AJConnell](https://github.com/ajconnell/reversePolishCalculator/blob/master/README.md):
 
 ##### Base Requirements:
 
