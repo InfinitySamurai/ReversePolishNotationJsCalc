@@ -1,21 +1,23 @@
 import {Parser} from './parser';
+import {Stack} from './stack';
 
 class EntryPoint {
 
   private parser: Parser;
+  private stack: Stack;
 
   constructor() {
     this.parser = new Parser();
+    this.stack = new Stack();
   }
 
   public getStack() {
-    return {
-      randomStack: [1, 2, 3, 4, 5]
-    };
+    return this.stack.getStack();
   }
 
   public handleInput(input: string) {
-    return this.parser.parseString(input);
+    const parsedString: string[] = this.parser.parseString(input);
+    return this.stack.pushListToStack(parsedString);
   }
 
   public getHistory() {

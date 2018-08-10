@@ -9,14 +9,6 @@ const server: Hapi.Server = Hapi.Server({
 const entryPoint: EntryPoint = new EntryPoint();
 
 server.route({
-  method: 'GET',
-  path: '/hello',
-  handler: (request: Hapi.Request, reply: Hapi.IReply) => {
-    return entryPoint.getStack();
-  }
-});
-
-server.route({
   method: 'POST',
   path: '/stack',
   handler: (request: Hapi.Request, reply: Hapi.IReply) => {
@@ -33,7 +25,7 @@ server.route({
   method: 'GET',
   path: '/stack',
   handler: (request: Hapi.Request, reply: Hapi.IReply) => {
-    return {thing: 'Nothing here'};
+    return entryPoint.getStack();
   }
 });
 
