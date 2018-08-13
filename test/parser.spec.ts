@@ -39,4 +39,9 @@ describe('Parser', () => {
     const input = '1 5 / 0 12 clear';
     expect(parser.parseString.bind(parser, input)).to.throw();
   });
+
+  it('should return an error if the input only contains spaces', () => {
+    const input = '    ';
+    expect(parser.parseString.bind(parser, input)).to.throw();
+  });
 });
