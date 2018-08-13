@@ -40,7 +40,7 @@ gulp.task('build', () => {
 
 gulp.task('runServer', () => {
   nodemon ({
-    script: "build/index.js",
+    script: "build/server.js",
     env: { "NODE_ENV": "development"}
   })
     .on("restart", () => {
