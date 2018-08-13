@@ -10,7 +10,11 @@ var tsProject = typescript.createProject('tsconfig.json')
 
 
 gulp.task('default', () => {
-  console.log("Your only option right now is `gulp serve`");
+  console.log('You have the following options:');
+  console.log('gulp test');
+  console.log('gulp build');
+  console.log('gulp runServer');
+  console.log('gulp serve (runs all of the above)');
 })
 
 gulp.task('tslint', () => {
