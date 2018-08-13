@@ -1,6 +1,6 @@
 class Stack {
 
-  private stack: string[];
+  private stack: number[];
 
   private operatorToFunction = {
     '+': (x, y) => x + y,
@@ -13,14 +13,14 @@ class Stack {
     this.stack = [];
   }
 
-  public pushListToStack(commands: string[]): string[] {
+  public pushListToStack(commands: string[]): number[] {
     commands.forEach((element) => {
       this.addItemToStack(element);
     });
     return this.stack;
   }
 
-  public getStack(): string[] {
+  public getStack(): number[] {
     return this.stack;
   }
 
@@ -30,10 +30,10 @@ class Stack {
       return;
     }
 
-    this.stack.push(item);
+    this.stack.push(Number(item));
   }
 
-  private clearStack(): string[] {
+  private clearStack(): number[] {
     this.stack = [];
     return this.stack;
   }
@@ -46,14 +46,14 @@ class Stack {
 
     const topOfStack = Number(this.stack.pop());
     if (operator === 'sqrt') {
-      this.stack.push(String(Math.sqrt(topOfStack)));
+      this.stack.push(Math.sqrt(topOfStack));
       return;
     }
 
     const secondTopOfStack = Number(this.stack.pop());
     const operatorResult = this.operatorToFunction[operator](secondTopOfStack, topOfStack);
 
-    this.stack.push(String(operatorResult));
+    this.stack.push(operatorResult);
   }
 
 }
