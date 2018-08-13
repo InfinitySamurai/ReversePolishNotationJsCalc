@@ -1,6 +1,6 @@
 # JS Reverse Polish Notation Calculator
 
-A calculator built in JS for Reverse Polish Notation.
+A calculator built in JS for [Reverse Polish Notation](https://en.wikipedia.org/wiki/Reverse_Polish_notation).
 
 This incorporates the use of Typescript, and uses Hapi as a web server for this
 to be used over the web with POST and GET requests.
