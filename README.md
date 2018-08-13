@@ -15,7 +15,9 @@ to be used over the web with POST and GET requests.
 
 - Send post requests with space-separated strings with numbers and operators to `localhost:3000/stack`.
  - ie: `15 7 1 1 + − ÷ 3 × 2 1 1 + + −`
- - returns `5`
+ - returns `[5]`
+ - ie: `81 sqrt 9 + 10`
+ - returns `[18, 10]`
 - Send GET requests to `localhost:3000/stack` to receive the current state of the stack
 
 ##### Project limitations
