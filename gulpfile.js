@@ -5,12 +5,14 @@ var typescript = require('gulp-typescript')
 var nodemon = require('nodemon')
 var watch = require('gulp-watch')
 var mocha = require('gulp-mocha')
+var clean = require('gulp-clean')
 
 var tsProject = typescript.createProject('tsconfig.json')
 
 
 gulp.task('default', () => {
   console.log('You have the following options:');
+  console.log('gulp clean');
   console.log('gulp test');
   console.log('gulp build');
   console.log('gulp runServer');
@@ -25,6 +27,11 @@ gulp.task('tslint', () => {
     .pipe(tslint.report({
       allowWarnings: true
     }))
+})
+
+gulp.task('clean', () => {
+  return gulp.src('build/*.js')
+    .pipe(clean());
 })
 
 gulp.task('test', () => {
@@ -53,5 +60,5 @@ gulp.task('runServer', () => {
 })
 
 gulp.task('serve', function(cb) {
-  runSequence(['tslint', 'test'], 'build', 'runServer', cb)
+  runSequence(['tslint', 'test', 'clean'], 'build', 'runServer', cb)
 });
