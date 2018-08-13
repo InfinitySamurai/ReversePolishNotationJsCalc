@@ -35,7 +35,6 @@ async function start() {
     console.log('Server is running on port: ', server.info.uri);
   } catch (err) {
     console.log(err);
-    // process.exit(1);
   }
 }
 
