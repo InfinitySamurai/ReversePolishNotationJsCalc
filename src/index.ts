@@ -29,14 +29,6 @@ server.route({
   }
 });
 
-server.route({
-  method: 'GET',
-  path: '/history',
-  handler: (request: Hapi.Request, reply: Hapi.IReply) => {
-    return {thing: 'Nothing here'};
-  }
-});
-
 async function start() {
   try {
     await server.start();
