@@ -39,18 +39,34 @@ class Stack {
   }
 
   private applyOperatorToStack(operator: string): void {
+    let topOfStack: number;
+    let secondTopOfStack: number;
+
     if (operator === 'clear' || operator === 'clr') {
       this.clearStack();
       return;
     }
 
-    const topOfStack = Number(this.stack.pop());
+    if (this.stack.length < 1) {
+      throw new Error ('There are no items in the stack and no operators can be applied');
+    }
+
     if (operator === 'sqrt') {
+      topOfStack = Number(this.stack.pop());
+      if (topOfStack <= 0) {
+        this.stack.push(topOfStack);
+        throw new Error('Cannot take the square root of a number less than or equal to 0: ' + topOfStack);
+      }
       this.stack.push(Math.sqrt(topOfStack));
       return;
     }
 
-    const secondTopOfStack = Number(this.stack.pop());
+    if (this.stack.length < 2) {
+      throw new Error ('There are not enough items in the stack to perform operation: ' + operator);
+    }
+
+    topOfStack = Number(this.stack.pop());
+    secondTopOfStack = Number(this.stack.pop());
     const operatorResult = this.operatorToFunction[operator](secondTopOfStack, topOfStack);
 
     this.stack.push(operatorResult);

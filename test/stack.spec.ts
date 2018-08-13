@@ -54,4 +54,19 @@ describe('Stack', () => {
     const input = ['15', '7', '1', '1', '+', '-', '/', '3', '*', '2', '1', '1', '+', '+', '-'];
     expect(stack.pushListToStack(input)).to.deep.equal([5]);
   });
+
+  it('should not allow the square root of a number less than 0', () => {
+    const input = ['-5', 'sqrt'];
+    expect(stack.pushListToStack.bind(stack, input)).to.throw();
+  });
+
+  it('should not allow the sqaure root of a number equal to 0', () => {
+    const input = ['0', 'sqrt'];
+    expect(stack.pushListToStack.bind(stack, input)).to.throw();
+  });
+
+  it('should not allow operators that need 2 numbers to run if stack does not have 2 numbers in it', () => {
+    const input = ['5', '/'];
+    expect(stack.pushListToStack.bind(stack, input)).to.throw();
+  });
 });
